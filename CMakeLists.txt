@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 4.0)
+project(CPP LANGUAGES CXX)
+
+add_executable(Aufgabe0 Aufgabe0.cpp)
+add_executable(Aufgabe1 Aufgabe1.cpp)
+add_executable(Aufgabe2 Aufgabe2.cpp)
+add_executable(Aufgabe3 Aufgabe3.cpp)
+add_executable(Aufgabe4 Aufgabe4.cpp)
+add_executable(Aufgabe5 Aufgabe5.cpp)
+add_executable(Aufgabe6 Aufgabe6.cpp)
+
+add_compile_options(Aufgabe4 PRIVATE -Wall -Wextra -Wpedantic -Wconversion)
