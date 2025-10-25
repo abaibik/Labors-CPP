@@ -8,5 +8,6 @@ add_executable(Aufgabe3 Aufgabe3.cpp)
 add_executable(Aufgabe4 Aufgabe4.cpp)
 add_executable(Aufgabe5 Aufgabe5.cpp)
 add_executable(Aufgabe6 Aufgabe6.cpp)
+add_executable(Aufgabe7 Aufgabe7.cpp)
 
 add_compile_options(Aufgabe4 PRIVATE -Wall -Wextra -Wpedantic -Wconversion)
