@@ -11,5 +11,6 @@ add_executable(Aufgabe6 Aufgabe6.cpp)
 add_executable(Aufgabe7 Aufgabe7.cpp)
 add_executable(Aufgabe8 Aufgabe8.cpp)
 add_executable(Aufgabe9 Aufgabe9.cpp)
+add_executable(Aufgabe10 Aufgabe10.cpp)
 
 add_compile_options(Aufgabe4 PRIVATE -Wall -Wextra -Wpedantic -Wconversion)
