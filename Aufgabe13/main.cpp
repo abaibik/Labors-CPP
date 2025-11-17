@@ -1,0 +1,15 @@
+/* HIER */
+
+#include "Manager.h"
+#include "Worker.h"
+#include <iostream>
+
+int main() {
+  Manager m("Aleksandra", "Baibik", 1000.00);
+  m.print();
+  std::cout << "Gehalt: " << m.get_income() << std::endl << std::endl;
+  Worker w("Peter", "Mueller", 15.00, 40);
+  w.print();
+  std::cout << "Lohn: " << w.get_income() << std::endl;
+  return 0;
+}
