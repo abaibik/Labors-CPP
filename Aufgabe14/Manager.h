@@ -1,6 +1,8 @@
 /* HIER */
 
-#pragma once
+#ifndef MANAGER_H
+#define MANAGER_H
+
 #include "Employee.h"
 #include <string>
 
@@ -13,3 +15,5 @@ public:
   double get_income() const;
   void print() const;
 };
+
+#endif
