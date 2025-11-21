@@ -1,6 +1,7 @@
-/* hier */
-#pragma once
+/* HIER */
 
+#ifndef EMPLOYEE_H
+#define EMPLOYEE_H
 #include <string>
 
 class Employee {
@@ -11,3 +12,5 @@ public:
   Employee(const std::string, const std::string);
   void print() const;
 };
+
+#endif
