@@ -1,8 +1,9 @@
-#include "Manager.h"
-#include "Worker.h"
 #include <iostream>
 
 /* hier */
+
+import Manager;
+import Worker;
 
 int main() {
   Manager m("Gerd", "Mayer", 1000.00);
