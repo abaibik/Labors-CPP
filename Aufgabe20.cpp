@@ -12,83 +12,6 @@
 //             Parameter für den Usernamen soll den default -
 //         Wert "unauthenticated_user" enthalten.
 
-//         Schreiben Sie ein Interface "IAuthenticationProcedure",
-//     das die rein virtuelle Methode "authenticate" mit dem Rückgabewert
-//                                    "AuthenticationResult" enthält
-//                                        .
-
-//         Schreiben Sie eine Klasse
-//         "Client" mit dem Attribut
-//         "_authentication_procedure" vom Typ Pointer auf
-//         "IAuthenticationProcedure".Die Methode
-//         "set_authentication_procedure" nimmt einen Pointer auf
-//         "IAuthenticationProcedure" entgegen und setzt das Attribut
-//         "_authentication_procedure" entsprechend.Die methode "execute" nimmt
-//             keine Parameter entgegen und führt die folgende Logik aus
-//     : Es führt zunächst auf dem "_authentication_procedure" -
-//         Attribut die Methode
-//         "authenticate" aus und weist das Ergebnis einer konstanten vom Typ
-//         "AuthenticationResult" zu.Weist das
-//         "AuthenticationResult" ein positives Ergebnis aus,
-//     so wird auf der Konsole folgendes ausgegeben :
-
-//     Das Programm wird ausgeführt für[user]
-//         .War
-//             die Authentifizierung nicht erfolgreich so wird folgendes
-//             ausgegeben
-//     :
-
-//     Das Programm konnte nicht ausgeführt werden.Schreiben
-//         Sie drei verschiedene Implementierungen des Interfaces
-//     "IAuthenticationProcedure" : "MockAuth",
-//     "UsernamePassword" und "Certificate"
-//         .
-
-//     Die Klasse "MockAuth" gibt in jedem Fall ein positives
-//                "AuthenticationResult" für den Username "Default" zurück
-//         .
-
-//     Die Klasse "UsernamePassword" liest
-//         nacheinander zunächst den Usernamen und das Passwort ein
-//         .Dazu
-//             wird der Anwender jeweils über die Konsole zur Eingabe
-//             aufgefordert
-//     :
-
-//     Username : bzw.
-
-//                Password : Sind Username und Passwort identisch,
-//     so gibt die Klasse ein positives
-//         "AuthenticationResult" für den entsprechenden Username zurück
-//             .Andernfalls wird ein negatives "AuthenticationResult"
-//             zurückgegeben
-//             .
-
-//         Die Klasse
-//         "Certificate" liest den Zertifikatsaussteller von der Konsole ein
-//             .Der Anwender wird hierzu folgendermaßen aufgefordert :
-
-//     Zertifikatsaussteller : Ist der Zertifikatsaussteller
-//                             "hs-esslingen" so gibt die Klasse ein positives
-//                             "AuthenticationResult" zurück mit dem Usernamen
-//                             "certificate.owner"
-//             .Andernfalls wird ein negatives
-//                             "AuthenticationResult" zurückgegeben.
-
-//                             Für die Eingaben :
-
-//     Username : Maier Passwort : Maier
-
-//                                     Zertifikatsaussteller : hs -
-//         esslingen erzeugt das Programm die folgende(Ein -) Ausgabe :
-
-//     Authentifizierung über MockAuth Das Programm wird ausgeführt für Default
-//         .Authentifizierung über UsernamePassword Username : Maier Password
-//     : Maier Das Programm wird ausgeführt für Maier.Authentifizierung über
-//       Zertifikat Zertifikatsaussteller
-//     : hs -
-//         eslingen Das Programm wird ausgeführt für certificate.owner.
-
 class AuthenticationResult {
   const bool _c_is_authenticated;
   const std::string _c_username;
@@ -101,12 +24,26 @@ public:
   const std::string &get_username() const { return _c_username; }
 };
 
+//     Schreiben Sie ein Interface "IAuthenticationProcedure",
+//     das die rein virtuelle Methode "authenticate" mit dem Rückgabewert
+//                                    "AuthenticationResult" enthält.
 class IAuthenticationProcedure {
 public:
   virtual ~IAuthenticationProcedure() {}
   virtual AuthenticationResult authenticate() = 0;
 };
 
+//         Schreiben Sie eine Klasse "Client" mit dem Attribut
+//         "_authentication_procedure" vom Typ Pointer auf
+//         "IAuthenticationProcedure". Die Methode
+//         "set_authentication_procedure" nimmt einen Pointer auf
+//         "IAuthenticationProcedure" entgegen und setzt das Attribut
+//         "_authentication_procedure" entsprechend. Die methode "execute" nimmt
+//         keine Parameter entgegen und führt die folgende Logik aus:
+//         Es führt zunächst auf dem "_authentication_procedure" -
+//         Attribut die Methode
+//         "authenticate" aus und weist das Ergebnis einer konstanten vom Typ
+//         "AuthenticationResult" zu.
 class Client {
   IAuthenticationProcedure *_authentication_procedure;
 
@@ -128,6 +65,8 @@ public:
   }
 };
 
+//     Die Klasse "MockAuth" gibt in jedem Fall ein positives
+//                "AuthenticationResult" für den Username "Default" zurück
 class MockAuthentication : public IAuthenticationProcedure {
 public:
   AuthenticationResult authenticate() override {
@@ -135,6 +74,12 @@ public:
   };
 };
 
+//     Die Klasse "UsernamePassword" liest nacheinander zunächst den Usernamen
+//     und das Passwort ein. Dazu wird der Anwender jeweils über die Konsole zur
+//     Eingabe aufgefordert: Username : bzw.Password : Sind Username und
+//     Passwort identisch, so gibt die Klasse ein positives
+//     "AuthenticationResult" für den entsprechenden Username zurück.
+//     Andernfalls wird ein negatives "AuthenticationResult" zurückgegeben.
 class UsernamePassword : public IAuthenticationProcedure {
 private:
   std::string read_param(std::string param_name) {
@@ -154,6 +99,12 @@ public:
   };
 };
 
+//     Die Klasse "Certificate" liest den Zertifikatsaussteller von der Konsole
+//     ein. Der Anwender wird hierzu folgendermaßen aufgefordert :
+//     Zertifikatsaussteller : Ist der Zertifikatsaussteller "hs-esslingen"
+//     so gibt die Klasse ein positives "AuthenticationResult" zurück mit dem
+//     Usernamen "certificate.owner".
+//     Andernfalls wird ein negatives "AuthenticationResult" zurückgegeben.
 class Certificate : public IAuthenticationProcedure {
 private:
   std::string read_cert_owner() {
