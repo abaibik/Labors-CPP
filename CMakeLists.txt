@@ -23,6 +23,7 @@ add_executable(Aufgabe20 Aufgabe20.cpp)
 add_executable(Aufgabe21 Aufgabe21.cpp)
 add_executable(Aufgabe22 Aufgabe22.cpp)
 add_executable(Aufgabe23 Aufgabe23.cpp)
+add_executable(Aufgabe24 Aufgabe24.cpp)
 
 
 add_compile_options(Aufgabe4 PRIVATE -Wall -Wextra -Wpedantic -Wconversion)
